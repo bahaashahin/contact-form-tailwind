@@ -40,12 +40,12 @@ export default function ContactForm() {
   return (
     <div className="bg-white p-6 rounded-xl shadow-xl w-full max-w-md">
       <h2 className="text-2xl font-bold mb-4 text-center text-blue-600">
-        TECH B - E
+        Feedback about Bahaa Shahein 
       </h2>
 
       {sent && (
         <div className="bg-green-100 text-green-800 border border-green-300 rounded p-3 text-sm text-center mb-4 shadow-md animate-bounce">
-          شكرا يا عسول.💙💙💙
+          شكرا على رأيك 👀.💙💙💙
         </div>
       )}
 
@@ -56,15 +56,6 @@ export default function ContactForm() {
           value={form.name}
           onChange={handleChange}
           placeholder="Name"
-          required
-          className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
-        <input
-          type="email"
-          name="email"
-          value={form.email}
-          onChange={handleChange}
-          placeholder="Mail"
           required
           className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
