@@ -45,7 +45,7 @@ export default function ContactForm() {
 
       {sent && (
         <div className="bg-green-100 text-green-800 border border-green-300 rounded p-3 text-sm text-center mb-4 shadow-md animate-bounce">
-          شكرا على رأيك 👀.💙💙💙
+          شكرا علي رأيك يا عسول💙✨
         </div>
       )}
 
