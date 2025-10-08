@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", message: "",language: "" });
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
 
@@ -18,13 +18,14 @@ export default function ContactForm() {
       formData.append("name", form.name);
       formData.append("email", form.email);
       formData.append("message", form.message);
+      formData.append("language", form.language);
 
       await fetch(
         "https://script.google.com/macros/s/AKfycbxto5ZFl5EgNT4mPUIEncz6eE3OpWBtYMVKf0kBtuZFlEiEv4wEwMlXGvjgkMe7SDwp/exec",
         {
           method: "POST",
-          mode: "no-cors", // ضروري
-          body: formData, // ✅ مش JSON
+          mode: "no-cors", 
+          body: formData, 
         }
       );
 
@@ -45,7 +46,7 @@ export default function ContactForm() {
 
       {sent && (
         <div className="bg-green-100 text-green-800 border border-green-300 rounded p-3 text-sm text-center mb-4 shadow-md animate-bounce">
-          شكرا علي رأيك يا عسول💙✨
+          Thank you for Registering
         </div>
       )}
 
@@ -59,11 +60,32 @@ export default function ContactForm() {
           required
           className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
+        <input
+          type="email"
+          name="email"
+          value={form.email}
+          onChange={handleChange}
+          placeholder="Email"
+          required
+          className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+        <select
+          name="language"
+          value={form.language}
+          onChange={handleChange}
+          required
+          className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+        >
+            <option value="">Choose: Python or C++?</option>
+            <option value="Python">Python</option>
+            <option value="C++">C++</option>
+        </select>
+
         <textarea
           name="message"
           value={form.message}
           onChange={handleChange}
-          placeholder="Send Your message"
+          placeholder="Send Your Comments"
           required
           className="w-full px-4 py-2 border rounded resize-none focus:outline-none focus:ring-2 focus:ring-blue-400"
           rows="4"
