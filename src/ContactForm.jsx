@@ -1,4 +1,4 @@
-import { useState } from "react";
+ import { useState } from "react";
 
 export default function ContactForm() {
   const [form, setForm] = useState({ name: "", email: "", message: "",language: "" });
@@ -41,7 +41,7 @@ export default function ContactForm() {
   return (
     <div className="bg-white p-6 rounded-xl shadow-xl w-full max-w-md">
       <h2 className="text-2xl font-bold mb-4 text-center text-black">
-        Feedback  <br>Bahaa Shahein 
+        Course registration 
       </h2>
 
       {sent && (
