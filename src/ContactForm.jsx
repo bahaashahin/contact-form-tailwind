@@ -31,7 +31,7 @@ export default function ContactForm() {
 
     // هنا حط اللينك الجديد بتاع الـ Web App
     const scriptURL =
-      "https://script.google.com/macros/s/AKfycbx-j3KUwTX5Y5brFKeBanM0vHPbX0eAZvZrOFy-DZeSU5Jj6uf648nUxsPo1Diwck3y/exec";
+      "https://script.google.com/macros/s/AKfycbzZmr72xIq_4t2zxj3kKK3j7CNfpWEQu-OhSShCLMNEdGQbT6GCH6YLAC9EqbCFUh4/exec";
 
     try {
       const body = new URLSearchParams(form).toString();
