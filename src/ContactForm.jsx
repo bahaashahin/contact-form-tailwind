@@ -1,12 +1,18 @@
 import { useState } from "react";
 
 export default function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", language: "", promo: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    language: "",
+    promo: "",
+  });
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
 
-  const VALID_PROMO = "5792"; // code
+  const VALID_PROMO = "5792"; // الكود الصحيح
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -17,29 +23,26 @@ export default function ContactForm() {
     setLoading(true);
     setError("");
 
-    // التحقق من الكود قبل الإرسال
     if (form.promo !== VALID_PROMO) {
       setError("❌ Invalid promo code!");
       setLoading(false);
       return;
     }
 
-    try {
-      const formData = new FormData();
-      formData.append("name", form.name);
-      formData.append("email", form.email);
-      formData.append("phone", form.phone);
-      formData.append("language", form.language);
-      formData.append("promo", form.promo);
+    // هنا حط اللينك الجديد بتاع الـ Web App
+    const scriptURL =
+      "https://script.google.com/macros/s/AKfycbxto5ZFl5EgNT4mPUIEncz6eE3OpWBtYMVKf0kBtuZFlEiEv4wEwMlXGvjgkMe7SDwp/exec";
 
-      await fetch(
-        "https://script.google.com/macros/s/AKfycbxto5ZFl5EgNT4mPUIEncz6eE3OpWBtYMVKf0kBtuZFlEiEv4wEwMlXGvjgkMe7SDwp/exec",
-        {
-          method: "POST",
-          mode: "no-cors",
-          body: formData,
-        }
-      );
+    try {
+      const body = new URLSearchParams(form).toString();
+
+      await fetch(scriptURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body,
+      });
 
       setSent(true);
       setForm({ name: "", email: "", phone: "", language: "", promo: "" });
@@ -79,6 +82,7 @@ export default function ContactForm() {
           required
           className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
+
         <input
           type="email"
           name="email"
@@ -88,6 +92,7 @@ export default function ContactForm() {
           required
           className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
+
         <input
           type="tel"
           name="phone"
