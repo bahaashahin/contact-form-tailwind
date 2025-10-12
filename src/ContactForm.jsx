@@ -12,7 +12,7 @@ export default function ContactForm() {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
 
-  const VALID_PROMO = "5792"; // الكود الصحيح
+  const VALID_PROMO = "102103"; // الكود الصحيح
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
